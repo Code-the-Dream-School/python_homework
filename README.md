@@ -5,10 +5,14 @@ Before using this repository, you must install Python and must complete the rest
 To use this repository:
 
 1. Sign into your GitHub, and create a repository called python_homework.  It must be a public repository.  Do not create a .gitignore or a README.md.
-2. On your laptop, clone the [https://github.com/Code-the-Dream-School/python_homework](https://github.com/Code-the-Dream-School/python_homework) repository. (Do not clone the repository you just created.)
-3. Change to the python_homework directory.  Enter the following commands:
+2. On your computer, clone the [https://github.com/Code-the-Dream-School/python_homework](https://github.com/Code-the-Dream-School/python_homework) repository. (Do not clone the repository you just created.)
+3. Change to the python_homework directory you just cloned.  Enter the following commands:
 ```shell
+# if you use ssh authentication:
+git remote set-url origin git@github.com/your-github-id/python_homework
+# if you use token based authentication:
 git remote set-url origin https://github.com/your-github-id/python_homework
+
 git remote add upstream https://github.com/Code-the-Dream-School/python_homework
 git push origin main
 ```
@@ -24,7 +28,7 @@ python -m venv .venv
 source .venv/Scripts/activate
 code .
 ```
-4. Important: Open the VSCode command pallette (ctrl-shift P).  In the `Python: Select Interpreter` option, choose the one with `.venv`.  If you have any terminal sessions open, close them, and open a new one.  You will see `(.venv)` in your terminal prompt.
+4. Important: Open the VSCode command pallette (ctrl-shift P).  In the `Python: Select Interpreter` option, choose the one with `.venv`.  You can use the search box at the top to find it.  If you have any terminal sessions open, close them, and open a new one.  You will see `(.venv)` in your terminal prompt.
 5. From the VSCode terminal session, enter the command:
 ```shell
 pip install -r requirements.txt
