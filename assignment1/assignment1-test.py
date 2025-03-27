@@ -1,4 +1,4 @@
-import assignment1 as a1
+import homework.python_homework.assignment1.assignment_intro_2_pt_wk2 as a1
 
 def test_hello():
     assert a1.hello() == "Hello!"
