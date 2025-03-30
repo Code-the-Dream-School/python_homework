@@ -1,0 +1,8 @@
+Nothing
+Chilling
+Studying
+done for now
+& "C:/Users/CICD STUDENT/Desktop/python_class/homework/python_homework/assignment2/.venv/Scripts/python.exe" "c:/Users/CICD STUDENT/Desktop/python_class/homework/python_homework/assignment2/diary.py"
+Chillin
+done for today
+done for now
