@@ -2,16 +2,16 @@
 
 # Task 1: Hello
 def hello(): 
-    return "Hello"
+    return "Hello!"
 
 print(hello())
 
 
 # Task 2: Greet with a Formatted String
-def helloName(name):
-    return "Hello! " +name
+def greet(name):
+    return "Hello " +name + "!"
 
-print(helloName("Mike"))
+print(greet("Mike"))
 
 # Task 3: Calculator
 def calc(a, b, operation="multiply"):
@@ -147,22 +147,20 @@ def pig_latin(text):
         vowels = {"a", "e", "i", "o", "u"}
         words = text.split()
         pig_latin_words = []
-        
+
         for word in words:
             if word[0] in vowels:
                 pig_latin_words.append(word + "ay")
-            elif word.startswith("qu"):
-                pig_latin_words.append(word[2:] + "quay")
             else:
-                consonant_cluster = ""
-                for char in word:
-                    if char in vowels:
+                index = 0
+                while index < len(word) and word[index] not in vowels:
+                    # Special case: treat 'qu' as a unit
+                    if word[index] == 'q' and index + 1 < len(word) and word[index + 1] == 'u':
+                        index += 2
                         break
-                    consonant_cluster += char
-                pig_latin_words.append(word[len(consonant_cluster):] + consonant_cluster + "ay")
-        
+                    index += 1
+                pig_latin_words.append(word[index:] + word[:index] + "ay")
+
         return " ".join(pig_latin_words)
     except Exception as e:
         return f"An error occurred: {e}"
-    
-print(pig_latin("python programming"))  # Expected: "ythonpay ogrammingpray"
