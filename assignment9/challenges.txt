@@ -1,0 +1,7 @@
+- One challenge was finding a reliable XPath that targets only the Top 10 vulnerabilities. Some links on the page matched the pattern but were unrelated or duplicates.
+I solved this by filtering out entries with empty titles and using a partial match on the href attribute.
+
+- Another challenge was running this in headless mode — the page sometimes wouldn't render properly. I resolved this by keeping Firefox in visible mode during testing.
+
+-Also I realized using Githubs Codespace enviroment isnt the best approach as was getting an error accessing
+chromium or firefox due to githubs built in limitations. Shifting to VS code made job much easietr.

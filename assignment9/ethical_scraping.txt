@@ -1,0 +1,21 @@
+The following paths are disallowed according to Wiki's robots.txt:
+- /w/index.php
+- /wiki/Special:
+- /wiki/Talk:
+- /wiki/User:
+- /wiki/User_talk:
+- /wiki/Wikipedia:
+- /wiki/Wikipedia_talk:
+- /wiki/File:
+- /wiki/File_talk:
+- /wiki/Template:
+- /wiki/Template_talk:
+
+These pages are typically user pages, special functions, or internal tools.
+
+
+Importance of enforcing ethics in robots.txt:
+
+ Wikipedia sets rules for all user agents (User-agent: *), but also includes special disallow rules for certain bots, like 'GPTBot'.
+
+The robots.txt file communicates which parts of a website are off-limits to web crawlers or scrapers. It helps site owners manage server load, prevent indexing of sensitive or irrelevant pages, and maintain ethical boundaries. Following robots.txt is a core part of respectful web scraping.
