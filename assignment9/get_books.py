@@ -1,39 +1,38 @@
 import time
 import json
 import pandas as pd
-from shutil import which
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.service import Service
+from webdriver_manager.firefox import GeckoDriverManager
 
-# Find Chromium browser
-chrome_path = which("chromium-browser")
-if not chrome_path:
-    raise Exception("Chromium is not installed.")
+import os
 
-options = webdriver.ChromeOptions()
-options.binary_location = chrome_path
-options.add_argument("--headless")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
-options.add_argument("--remote-debugging-port=9222")
+firefox_path = "/Applications/Firefox.app/Contents/MacOS/firefox"
+if not os.path.exists(firefox_path):
+    raise Exception("Firefox not found at expected path.")
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+options = webdriver.FirefoxOptions()
+options.binary_location = firefox_path  # explicitly set Firefox path
+#options.add_argument('--headless')  # Uncomment this line to run in headless mode
 
-
-
+driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=options)
 
 try:
     # Load the search results page
     url = "https://durhamcounty.bibliocommons.com/v2/search?query=learning%20spanish&searchType=smart"
     driver.get(url)
-    time.sleep(5)  # Wait for the page to load
+    #time.sleep(10)  # Wait for the page to load
+    # Use WebDriverWait instead of sleep
+
+    wait = WebDriverWait(driver, 20)
+    items = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "li.cp-search-result-item")))
 
     # Find all search result items
     results = []
-    items = driver.find_elements(By.CSS_SELECTOR, "li[class^='cp-search-result']")
+    #items = driver.find_elements(By.CSS_SELECTOR, "li[class^='cp-search-result']")
 
     for item in items:
         # Extract title
@@ -66,11 +65,15 @@ try:
 
     # Create a DataFrame from the results
     df = pd.DataFrame(results)
-    print(df)
+
+    print(f"Scraped {len(results)} book entries.")
+    print("Data saved to get_books.csv and get_books.json")
+
 
     # Save to CSV and JSON
-    df.to_csv("assignment9/get_books.csv", index=False)
-    with open("assignment9/get_books.json", "w") as f:
+
+    df.to_csv("get_books.csv", index=False)
+    with open("get_books.json", "w") as f:
         json.dump(results, f, indent=4)
 
 finally:
