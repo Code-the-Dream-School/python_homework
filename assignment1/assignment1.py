@@ -1,12 +1,12 @@
 #Task1
-def greet():
-    print("Hello!")
+def hello():
+    return "Hello!"
 
-greet()  # Write your code here.
+hello()  # Write your code here.
 
 #Task2
 def greet(name):
-    print("Hello, " + name + "!")
+    return f"Hello, {name}!"
 
 greet("Anna")
 
@@ -147,25 +147,30 @@ print((hangman('hosanna', 'oa')))
 print(hangman('hosanna', 'hn'))
 
 #Task10
-def pig_latin(word):
+def pig_latin(text):
     vowels = "aeiou"
 
-    if word[0] in vowels:
-     return word + "ay"
+    def convert(word):
+        if word[0] in vowels:
+            return word + "ay"
 
-    if word.startswith("qu"):
-     return word[2:] + "quay"
+        if word.startswith("qu"):
+            return word[2:] + "quay"
 
-    i = 0
-    while i < len(word) :
-        if word[i] in vowels:
-            break
-        if word[i] == "q" and i + 1 < len(word) and word[i + 1] == "u":
-            i += 2
-            break
-        i += 1
+        i = 0
+        while i < len(word):
+            if word[i] in vowels:
+                break
+            if word[i] == "q" and i + 1 < len(word) and word[i + 1] == "u":
+                i += 2
+                break
+            i += 1
 
-    return word[i:] + word[:i] + "ay"
+        return word[i:] + word[:i] + "ay"
+
+    return " ".join(convert(w) for w in text.split())
+
+
 
 print(pig_latin('hello'))
 print(pig_latin('aqua'))
