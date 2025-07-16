@@ -168,5 +168,3 @@ def pig_latin(sentence):
 # print(titleize("the lord of the rings"))
 # print(hangman("alphabet", "ab"))
 # print(pig_latin("quiet queen apple"))
-
-
