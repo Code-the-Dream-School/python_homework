@@ -90,11 +90,19 @@ def student_scores(mode, **kwargs):
 def titleize(text):
     little_words = {"a", "on", "an", "the", "of", "and", "is", "in"}
     words = text.split()
-    result = [words[0].capitalize()] + [
-        word if word in little_words else word.capitalize() for word in words[1:-1]
-    ] + [words[-1].capitalize()]
-    return " ".join(result)
 
+    if not words:
+        return ""
+
+    if len(words) == 1:
+        return words[0].capitalize()
+
+    result = (
+        [words[0].capitalize()] +
+        [word if word in little_words else word.capitalize() for word in words[1:-1]] +
+        [words[-1].capitalize()]
+    )
+    return " ".join(result)
 
 # Task 9: Hangman, with more String Operations
 def hangman(secret, guess):
