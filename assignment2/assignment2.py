@@ -1,5 +1,8 @@
 import csv
 import os
+import custom_module
+from datetime import datetime
+
 
 # Task 2
 def read_employees():
@@ -7,20 +10,14 @@ def read_employees():
     try:
         with open("../csv/employees.csv", newline='') as file:
             reader = csv.reader(file)
-        employees_data["fields"] = next(reader)
-
-        employees_data["rows"] = []
-        for row in reader:
-            employees_data["rows"].append(row)
-
+            employees_data["fields"] = next(reader)
+            employees_data["rows"] = [row for row in reader]
     except Exception as e:
        print(f"Error reading CSV file: {e}")
        exit(1)
 
     return employees_data
-
 employees = read_employees()
-print(employees)
 
 # Task 3
 def column_index(column_name):
@@ -50,7 +47,7 @@ def employee_find(employee_id):
         print(f"'{employee_id}' not found.")
         exit(1)
 
-        # Task 6
+# Task 6
 
 def employee_find_2(employee_id):
     try:
@@ -60,7 +57,7 @@ def employee_find_2(employee_id):
         print(f"'{employee_id}' not found.")
         exit(1)
 
-        # Task 7
+# Task 7
 
 def sort_by_last_name():
     try:
@@ -71,7 +68,7 @@ def sort_by_last_name():
         print("Not sorted")
         exit(1)
 
-        # Task 8
+# Task 8
 
 def employee_dict(row):
     result = {}
@@ -84,11 +81,11 @@ def employee_dict(row):
         if fields[i] != "employee_id":
             result[fields[i]] = row[i]
 
-    return result
+
     print(employee_dict(employees["rows"][0]))
+    return result
 
-
-        # Task 9
+# Task 9
 
 def all_employees_dict():
     if not employees.get("fields") or not employees.get("rows"):
@@ -101,17 +98,92 @@ def all_employees_dict():
         for row in employees["rows"]
         if len(row) == len(employees["fields"])
     }
-        # Task 10
+
+# Task 10
 def get_this_value():
     return os.getenv('THISVALUE')
 print(get_this_value())
 
 # Task 11
 
-        # Task 12
+def set_that_secret(secret):
+    custom_module.set_secret(secret)
 
-        # Task 13
+# Task 12
+def read_minutes():
+    try:
+        minutes_data = {}
+        with open('../csv/minutes1.csv', 'r') as file1:
+            reader = csv.reader(file1)
+            first_row = True
+            rows = []
+            for row in reader:
+                if first_row:
+                    first_row = False
+                    minutes_data["minutes1"] = {"fields": row}
+                else:
+                    rows.append(tuple(row))
+            minutes_data["minutes1"]["rows"] = rows
+        with open('../csv/minutes2.csv', 'r') as file2:
+            reader = csv.reader(file2)
+            first_row = True
+            rows = []
+            for row in reader:
+                if first_row:
+                    first_row = False
+                    minutes_data["minutes2"] = {"fields": row}
+                else:
+                    rows.append(tuple(row))
+            minutes_data["minutes2"]["rows"] = rows
+        return minutes_data["minutes1"], minutes_data["minutes2"]
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        exit(1)
+minutes1, minutes2 = read_minutes()
 
-        # Task 14
+# Task 13
 
-        # Task 15
+def create_minutes_set():
+    try:
+        minutes_set_1 = set(minutes1["rows"])
+        minutes_set_2 = set(minutes2["rows"])
+        result_set = minutes_set_1.union(minutes_set_2)
+        return result_set
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        exit(1)
+
+minutes_set = create_minutes_set()
+
+# Task 14
+
+def create_minutes_list():
+    try:
+        minutes_list = list(minutes_set)
+        minutes_list = list(map(lambda x: (x[0], datetime.strptime(x[1], "%B %d, %Y")), minutes_list))
+        return minutes_list
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        exit(1)
+
+minutes_list = create_minutes_list()
+
+# Task 15
+
+
+def write_sorted_list():
+    try:
+        sorted_minutes = sorted(minutes_list, key=lambda x: x[1])
+        sorted_minutes = list(map(lambda x: (x[0], x[1].strftime("%B %d, %Y")), sorted_minutes))
+
+        with open('./minutes.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(minutes1['fields'])
+            for row in sorted_minutes:
+                writer.writerow(row)
+        return sorted_minutes
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        exit(1)
+
+sorted_minutes_list = write_sorted_list()
