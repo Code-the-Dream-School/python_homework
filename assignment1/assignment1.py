@@ -1,16 +1,20 @@
-#Task1
+# Task1
 def hello():
     return "Hello!"
 
+
 hello()  # Write your code here.
 
-#Task2
+
+# Task2
 def greet(name):
     return f"Hello, {name}!"
 
+
 greet("Anna")
 
-#Task3
+
+# Task3
 def calc(a, b, operation="multiply"):
     try:
         if operation == "add":
@@ -26,7 +30,7 @@ def calc(a, b, operation="multiply"):
         elif operation == "int_divide":
             return a // b
         elif operation == "power":
-            return a ** b
+            return a**b
         else:
             return "Unknown operation"
     except ZeroDivisionError:
@@ -43,7 +47,8 @@ print(calc(10, 2, "int_divide"))
 print(calc(2, 3, "power"))
 print(calc(2, 0, "divide"))
 
-#Task4
+
+# Task4
 def data_type_conversion(value, type):
     try:
         if type == "int":
@@ -55,13 +60,15 @@ def data_type_conversion(value, type):
         else:
             return f"Unknown data type: {type}"
     except (ValueError, TypeError):
-     return f"You can't convert {value} into a {type}."
+        return f"You can't convert {value} into a {type}."
+
 
 print(data_type_conversion("abc", "int"))
 print(data_type_conversion("123.45", "float"))
 print(data_type_conversion(123, "str"))
 
-#Task5
+
+# Task5
 def grade(*args):
     try:
         if not all(isinstance(score, (int, float)) for score in args):
@@ -82,35 +89,41 @@ def grade(*args):
     else:
         return "F"
 
+
 print(grade())
 print(grade(100, 95, 80))
-print(grade(50, 70, '0'))
+print(grade(50, 70, "0"))
 
-#Task6
+
+# Task6
 def repeat(string, count):
     result = ""
     for _ in range(count):
         result += string
     return result
 
-print( repeat('ho', 3))
 
-#Task7
+print(repeat("ho", 3))
+
+
+# Task7
 def student_scores(param, **kwargs):
     if not kwargs:
         return "No student scores provided."
     if param == "best":
-       return max(kwargs, key=kwargs.get)
+        return max(kwargs, key=kwargs.get)
     elif param == "mean":
-       average = sum(kwargs.values()) / len(kwargs)
-       return average
+        average = sum(kwargs.values()) / len(kwargs)
+        return average
     else:
-       return "Invalid mode. Use 'best' or 'mean'."
+        return "Invalid mode. Use 'best' or 'mean'."
+
 
 print(student_scores("best", Anna=95, Maria=92, Viktoria=88))
 print(student_scores("mean", Andrew=85, Brad=82, Dan=78))
 
-#Task8
+
+# Task8
 def titleize(str):
     little = {"a", "on", "an", "the", "of", "and", "is", "in"}
     words = str.lower().split()
@@ -130,10 +143,12 @@ def titleize(str):
 
     return " ".join(result)
 
-print(titleize('anna bazileeva'))
-print(titleize('national aeronautics and space administration'))
 
-#Task9
+print(titleize("anna bazileeva"))
+print(titleize("national aeronautics and space administration"))
+
+
+# Task9
 def hangman(secret, guess):
     secret_word = ""
     for letter in secret:
@@ -143,10 +158,12 @@ def hangman(secret, guess):
             secret_word += "_"
     return secret_word
 
-print((hangman('hosanna', 'oa')))
-print(hangman('hosanna', 'hn'))
 
-#Task10
+print((hangman("hosanna", "oa")))
+print(hangman("hosanna", "hn"))
+
+
+# Task10
 def pig_latin(text):
     vowels = "aeiou"
 
@@ -171,7 +188,6 @@ def pig_latin(text):
     return " ".join(convert(w) for w in text.split())
 
 
-
-print(pig_latin('hello'))
-print(pig_latin('aqua'))
-print(pig_latin('kumquat'))
+print(pig_latin("hello"))
+print(pig_latin("aqua"))
+print(pig_latin("kumquat"))
