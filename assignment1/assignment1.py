@@ -61,13 +61,16 @@ def grade(*args):
         return "D"
     else:
         return "F"
-# Example usage of the functions
-if __name__ == "__main__":
-    print(hello())
-    print(greet("Ade"))
-    print(calc(10, 8, "add"))
-    print(data_type_conversion("123", "int"))
-    print(grade(85, 90, 78, 92))  # Example grades
-    print(grade())  # No grades provided
-    print(data_type_conversion("abc", "int"))  # Invalid conversion
-    print(calc(10, 0, "divide"))  # Division by zero
+
+#Task 6: For Loop with a range
+
+def repeat(string, count):
+    if count > 0:
+        for i in range(count):
+            print(string)
+        print (string * count)
+    else:
+        return "Error: Count must be a positive integer"
+    
+    
+repeat("Hello", 3)
