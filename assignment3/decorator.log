@@ -1,0 +1,45 @@
+function: nothingfunction
+positional parameters: none
+keyword parameters: none
+return: None
+
+function: check_args
+positional parameters: [1, 2, 'true']
+keyword parameters: none
+return: True
+
+function: get_decorator
+positional parameters: none
+keyword parameters: {'debug': True}
+return: <function logger_decorator at 0x10eb8a1f0>
+
+function: nothingfunction
+positional parameters: none
+keyword parameters: none
+return: None
+
+function: check_args
+positional parameters: [1, 2, 'true']
+keyword parameters: none
+return: True
+
+function: get_decorator
+positional parameters: none
+keyword parameters: {'debug': True}
+return: <function logger_decorator at 0x10b4321f0>
+
+function: nothingfunction
+positional parameters: none
+keyword parameters: none
+return: None
+
+function: check_args
+positional parameters: [1, 2, 'true']
+keyword parameters: none
+return: True
+
+function: get_decorator
+positional parameters: none
+keyword parameters: {'debug': True}
+return: <function logger_decorator at 0x1037d61f0>
+
