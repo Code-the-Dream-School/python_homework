@@ -72,5 +72,53 @@ def repeat(string, count):
     else:
         return "Error: Count must be a positive integer"
     
+#Trying out task 6
+#repeat("Hello", 3)
+
+#Task 7: Student scores using **kwargs
+"""def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+print_info(name="Janet", role="Developer", age=25)"""
+def student_scores(**kwargs):
+   for key, value in kwargs.items():
+       if key.startswith("score_") and isinstance(value, (int, float)):
+           score.append(value)
+       if value == max(score):
+           return f"kwargs.get('name', 'Student') has the highest score: {key} with a score of {value}" 
+       elif value == score/len(score):
+           return f"average score is {sum(score)/len(score)}"
+       
+# Task 8: Titleize, with String and List Operations
+
+def titleize(string):
+    for i in string.split():
+        if i.isupper():
+            return "Error: String contains uppercase letters"
+    return string.title()   
+    if capitalize:
+        return string.title()
+    else:
+        return string.lower()
     
-repeat("Hello", 3)
+#Task 9:Hangman, with more String Operations
+
+def hangman(secret, guess):
+    for char in guess:
+        if char in secret:
+            print(f"Good guess: {char} is in the word!")
+        else:
+            print(f"{char} is not in the word.")
+    # Example of showing the current guessed state (optional):
+    # print(''.join([c if c in guess else '_' for c in secret]))
+
+    #Task 10: Pig Latin, Another String Manipulation Exercise
+
+def pigLatin(word):
+    # Simple Pig Latin implementation: move first letter to end and add 'ay'
+    first = word[0]
+    if first.lower() in 'aeiou':
+        return word + "ay"
+    else:
+        return word[1:] + first + "ay"
