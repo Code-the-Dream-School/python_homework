@@ -41,4 +41,6 @@ except Exception as e:
     # This shows exactly where in the code the error occurred.
     traceback.print_exc()
 
-    
+
+# Task 2 Read a csv file
+
