@@ -1,0 +1,5 @@
+this string would be logged
+this string would be logged
+this string would be logged
+Calling function 'log_dec' with args=(), kwargs={'name': 'Rabiat', 'age': 30, 'city': 'New York'}
+Function 'log_dec' returned name: Rabiat
