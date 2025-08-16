@@ -16,7 +16,6 @@ task1_older["Age"] = task1_older["Age"] + 1
 task1_older.to_csv("employees.csv", index=False)
 
 # Task 2
-# Task 2
 task2_employees = pd.read_csv("employees.csv")
 
 with open("additional_employees.json", "w") as f:
