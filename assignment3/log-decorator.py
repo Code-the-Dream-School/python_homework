@@ -34,3 +34,6 @@ def log_dec(**kwargs):
 
 #tack f. Test the decorated functions
 log_dec(name="Rabiat", age=30, city="New York")
+
+
+#Task2: Decorator that takes an argument

@@ -10,3 +10,6 @@ names = ["Alice", "Bob", "Charlie", "Denton", "Williams", "Martherton"]
 # Create a new list with names containing 'e'
 names_with_e = [name for name in names if 'e' in name]
 print(names_with_e)
+
+
+ 
