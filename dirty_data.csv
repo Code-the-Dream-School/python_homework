@@ -1,0 +1,7 @@
+Name,Age,City,Salary,Hire Date,Department
+ Alice ,25,New York,70000,2020-01-15,Sales
+Bob,unknown,Los Angeles,80000,2019-03-22, Marketing
+Charlie,35,Chicago,n/a,2018-07-30,IT
+Alice,25,New York,70000,2020-01-15,Sales
+Dave,NaN,Houston,60000,2021-05-12,HR
+Eve,28, Miami ,unknown,2022-11-01,Operations
