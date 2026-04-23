@@ -1,6 +1,6 @@
 # Task 1: Hello
 def hello():
-    return "Hello"
+    return "Hello!"
 
 print(hello())  
 
@@ -21,12 +21,20 @@ def calc(a, b, operation="multiply"):
             return a - b
         elif operation == "multiply":
             return a * b
+        elif operation == "modulo":
+            return a % b
         elif operation == "divide":
             return a / b
+        elif operation == "int_divide":
+            return a // b
+        elif operation == "power":
+            return a ** b
         else:
             return "Invalid operation"
     except ZeroDivisionError:
         return "Error: Division by zero is not allowed"
+    except (TypeError, ValueError):
+        return "You can't multiply those values!"
     
     
 print(calc(10, 5, "subtract"))
@@ -41,9 +49,9 @@ print("Go to the next Task-4")
 def convert_to_string(value, data_type):
     try:
         if data_type == "int":
-            return str(int(value))
+            return int(value)
         elif data_type == "float":
-            return str(float(value))
+            return float(value)
         elif data_type == 'str':
             return str(value)
         else:
@@ -108,9 +116,9 @@ def student_scores(mode, **kwargs):
         return best_name
 
     elif mode == "mean":
-        total = sum(kwargs.values())
-        count = len(kwargs)
-        return total / count
+        if len(kwargs) == 0:
+            return 0
+    return sum(kwargs.values()) / len(kwargs)
     
 print(student_scores("best", Alice=90, Bob=85, Charlie=95))
 
