@@ -6,9 +6,9 @@ class TictactoeException(Exception):
 
 class Board: 
     valid_moves = [
-        "top left", "top middle", "top right",
-        "middle left", "middle middle", "middle right",
-        "bottom left", "bottom middle", "bottom right"
+        "upper left", "upper middle", "upper right",
+        "middle left", "center", "middle right",
+        "lower left", "lower middle", "lower right"
     ]
 
     def __init__(self):
@@ -34,15 +34,15 @@ class Board:
             raise TictactoeException("Invalid move: " + location)
 
         positions = {
-            "top left": (0, 0),
-            "top middle": (0, 1),
-            "top right": (0, 2),
+            "upper left": (0, 0),
+            "upper middle": (0, 1),
+            "upper right": (0, 2),
             "middle left": (1, 0),
-            "middle middle": (1, 1),
+            "center": (1, 1),
             "middle right": (1, 2),
-            "bottom left": (2, 0),
-            "bottom middle": (2, 1),
-            "bottom right": (2, 2)
+            "lower left": (2, 0),
+            "lower middle": (2, 1),
+            "lower right": (2, 2)
         }
 
         row, col = positions[location]
@@ -67,26 +67,30 @@ class Board:
 
         for line in lines:
             if line[0] != " " and line[0] == line[1] == line[2]:
-                return f"{line[0]} wins!"
+                return (True, f"{line[0]} wins!")
         
         if all(cell != " " for row in self.board for cell in row):
-            return "Cat's game!"
+            return (True, "Cat's game!")
             
-        return f"{self.turn}'s turn"
+        return (False, f"{self.turn}'s turn")
 
-game = Board()
 
-while True:
-    print(game)
-    print(game.whats_next())
+if __name__ == "__main__":
+    game = Board()
 
-    if game.whats_next() in ["X wins!", "O wins!", "Cat's game!"]:
-        break
 
-    location = input("Enter your move: ").strip().lower()
+    while True:
+        print(game)
 
-    try:
-        game.move(location)
+        game_over, message = game.whats_next()
+        print(message)
 
-    except TictactoeException as error:
-        print(error.message)
+        if game_over:
+            break
+
+        location = input("Enter your move: ").strip().lower()
+
+        try:
+            game.move(location)
+        except TictactoeException as error:
+            print(error.message)

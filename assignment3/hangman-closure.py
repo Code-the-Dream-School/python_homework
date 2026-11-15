@@ -22,7 +22,7 @@ secret_word = input("Enter the secret word: ").lower()
 game = make_hangman(secret_word)
 
 while True:
-    letter = input("Guess a letter: ").lower()
+    letter = input("Guess a letter: ").strip().lower()
     
     if game(letter):
          print("Congratulations! You guessed the word!")
